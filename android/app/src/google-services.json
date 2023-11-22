@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "811582869453",
+    "project_id": "mynurva",
+    "storage_bucket": "mynurva.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:811582869453:android:3d785687be49d3f6ccfe84",
+        "android_client_info": {
+          "package_name": "com.example.mynurva_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDkr9AshPLIVHqKoD92oY9UsO0lHcn3Eg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
