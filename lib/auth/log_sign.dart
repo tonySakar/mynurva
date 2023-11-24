@@ -12,6 +12,8 @@ class LogSign extends StatefulWidget {
 
 class _LogSignState extends State<LogSign> {
   @override
+
+
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;

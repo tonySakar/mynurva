@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:mynurva_project/auth/common_files.dart';
 import 'package:http/http.dart' as http;
 import 'package:mynurva_project/auth/otp.dart';
-
+import 'package:mynurva_project/auth/signup_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -14,41 +14,42 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
+  TextEditingController nameController = TextEditingController();
+  TextEditingController surnameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController phoneNumbrController = TextEditingController();
 
 
-  void login() async {
-    final email = emailController.text;
-    final password = passwordController.text;
-
-    // Replace the following URL with your actual login API endpoint
-    final apiUrl = "https://your-login-api-endpoint.com/login";
-
-    try {
-      final response = await http.post(
-        Uri.parse(apiUrl),
-        body: {
-          'email': email,
-          'password': password,
-        },
-      );
-
-      if (response.statusCode == 200) {
-        // Successful login
-        final responseData = json.decode(response.body);
-        // Process responseData as needed
-        print(responseData);
-      } else {
-        // Handle login error
-        print("Error: ${response.statusCode}");
-      }
-    } catch (e) {
-      // Handle exceptions
-      print("Exception: $e");
-    }
-  }
+  // void login() async {
+  //   final email = emailController.text;
+  //   // final password = phoneNumbrController.text;
+  //
+  //   // Replace the following URL with your actual login API endpoint
+  //   final apiUrl = "https://your-login-api-endpoint.com/login";
+  //
+  //   try {
+  //     final response = await http.post(
+  //       Uri.parse(apiUrl),
+  //       body: {
+  //         'email': email,
+  //         'password': password,
+  //       },
+  //     );
+  //
+  //     if (response.statusCode == 200) {
+  //       // Successful login
+  //       final responseData = json.decode(response.body);
+  //       // Process responseData as needed
+  //       print(responseData);
+  //     } else {
+  //       // Handle login error
+  //       print("Error: ${response.statusCode}");
+  //     }
+  //   } catch (e) {
+  //     // Handle exceptions
+  //     print("Exception: $e");
+  //   }
+  // }
 
   final FocusNode _focusNode = FocusNode();
   final bool _isFocused = false;
@@ -84,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             SizedBox(height: screenHeight / 8),
-             Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
@@ -107,20 +108,22 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                     Text(
+                    Text(
                       'Phone Number',
                       style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize:screenHeight/40),
+                          fontWeight: FontWeight.bold,
+                          fontSize: screenHeight / 40),
                     ),
                     SizedBox(height: screenHeight / 200),
                     SizedBox(
                       height: 50,
-                      child:   TextField(
+                      child: TextField(
                         controller: emailController,
                         enableSuggestions: false,
                         decoration: InputDecoration(
                           contentPadding: const EdgeInsets.only(left: 15),
-                          suffixIcon:  const Icon(Icons.phone,color: Colors.grey),
+                          suffixIcon:
+                              const Icon(Icons.phone, color: Colors.grey),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15.0),
                             borderSide: const BorderSide(
@@ -131,7 +134,8 @@ class _LoginPageState extends State<LoginPage> {
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15.0),
                             borderSide: const BorderSide(
-                              color: Appcolors.appGreen, // Set the border color when focused
+                              color: Appcolors
+                                  .appGreen, // Set the border color when focused
                               width: 2.0,
                             ),
                           ),
@@ -139,18 +143,21 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     SizedBox(height: screenHeight / 30),
-                     Text(
+                    Text(
                       ' Password',
                       style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: screenHeight/40),
+                          fontWeight: FontWeight.bold,
+                          fontSize: screenHeight / 40),
                     ),
                     SizedBox(height: screenHeight / 200),
                     Container(
-                      height: screenHeight/15,
-                      child:   TextField(
-                        controller: passwordController,
-                        decoration: InputDecoration(contentPadding: const EdgeInsets.only(left: 15),
-                          suffixIcon:  const Icon(Icons.remove_red_eye,color:Colors.grey),
+                      height: screenHeight / 15,
+                      child: TextField(
+                        // controller: passwordController,
+                        decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.only(left: 15),
+                          suffixIcon: const Icon(Icons.remove_red_eye,
+                              color: Colors.grey),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15.0),
                             borderSide: const BorderSide(
@@ -161,7 +168,8 @@ class _LoginPageState extends State<LoginPage> {
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(15.0),
                             borderSide: const BorderSide(
-                              color: Appcolors.appGreen, // Set the border color when focused
+                              color: Appcolors
+                                  .appGreen, // Set the border color when focused
                               width: 2.0,
                             ),
                           ),
@@ -183,16 +191,14 @@ class _LoginPageState extends State<LoginPage> {
                       width: double.infinity,
                       height: screenHeight / 16,
                       child: ElevatedButton(
-
                           style: ElevatedButton.styleFrom(
-
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15.0),
                             ),
                             primary: Appcolors.appGreen,
                           ),
                           onPressed: () {
-                            login;
+                            // login;
                           },
                           child: const Text(
                             'Login',
@@ -201,20 +207,27 @@ class _LoginPageState extends State<LoginPage> {
                           )),
                     ),
                     SizedBox(height: screenHeight / 150),
-                     Column(
+                    Column(
                       children: [
                         const Text('By signing in, you agree to the'),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                          const Text('T&C',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.red)),
-                          SizedBox(width: screenWidth/200),
-                            Text('and'),
-                            SizedBox(width: screenWidth/200),
-                          const Text(' Privacy policy',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.red),),
-                        ],)
-
-
+                            const Text('T&C',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.red)),
+                            SizedBox(width: screenWidth / 200),
+                            const Text('and'),
+                            SizedBox(width: screenWidth / 200),
+                            const Text(
+                              ' Privacy policy',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.red),
+                            ),
+                          ],
+                        )
                       ],
                     )
                   ],
@@ -222,14 +235,20 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             SizedBox(height: screenHeight / 7),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Dont have an account? '),
-                Text(
-                  'Sign Up',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold, color: Colors.red),
+                const Text('Dont have an account? '),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => SignUp()));
+                  },
+                  child: const Text(
+                    'Sign Up',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.red),
+                  ),
                 )
               ],
             ),
